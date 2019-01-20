@@ -2,6 +2,7 @@ package com.pondicherry.zoo.domain;
 
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.util.Date;
 import java.io.Serializable;
@@ -13,7 +14,10 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     private Long userId;
+    
+    @NotNull
     private String username;
+    
     private String password;
     private transient String password2;
     private transient Integer dobDay;
@@ -53,7 +57,7 @@ public class User implements Serializable {
 
     // Default Constructor
     public User() {
-
+    	this.username = "";
     }
 
     /**

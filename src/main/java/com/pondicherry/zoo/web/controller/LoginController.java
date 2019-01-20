@@ -6,6 +6,7 @@ import com.pondicherry.zoo.web.validators.LoginFormValidator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindException;
@@ -43,6 +44,7 @@ public class LoginController extends SimpleFormController {
        return "login";
    }
 
+//   @Transactional
    @RequestMapping(method = RequestMethod.POST)
    public String submit(HttpServletRequest request, @ModelAttribute("userCommand") User command, BindingResult result) throws Exception {
 
