@@ -25,16 +25,16 @@ public interface UserService {
     User register(String username, String password, Sex sex, Date dob, String postcode);
 
     /**
-     * Get the user with the given username and password, throwing an exception if the credentials
-     * are invalid.
+     * Validate the username.
      *
-     * @param username the username
-     * @param password the password
-     * @return the user
-     * @throws IllegalArgumentException if the username and password don't match on any users
-     * @see #authenticate(String, String)
+     * @param userName the username to validate
+     * @throws IllegalArgumentException if the username is null or empty
      */
-    User getUser(String username, String password);
+    default void validateName(String userName) {
+        if (userName == null || userName.isEmpty()) {
+            throw new IllegalArgumentException("Username cannot be null or empty");
+        }
+    }
 
     /**
      * Authenticate a user's credentials.
